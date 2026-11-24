@@ -1,0 +1,272 @@
+/* ==========================================================================
+   ESTILOS DE LIRA. CASA DE CUENTOS
+   Los colores y tipografías están todos acá arriba, en un solo lugar.
+   Colores medidos directamente del isologo:
+     beige de fondo  #E2D5C3 · terracota  #984316 · marrón de las cuerdas  #552B19
+   ========================================================================== */
+
+:root {
+  /* Colores de la marca */
+  --beige: #E2D5C3;          /* exactamente el fondo del logo */
+  --terracota: #984316;
+  --terracota-oscuro: #7A3511;
+  --marron: #552B19;
+  --crema: #F5EEE4;          /* fondo general, un poco más claro que el beige */
+  --papel: #FBF7F1;          /* fondo de tarjetas */
+  --texto: #2E1A10;          /* marrón muy oscuro en lugar de negro */
+  --texto-suave: #6A4E3E;
+  --linea: #D6C6B1;
+  --whatsapp: #2E6B3C;       /* verde apagado para que combine con la paleta */
+
+  /* Estados */
+  --disponible-fondo: #E3EBD5;  --disponible-texto: #3A5F2C;
+  --ultimas-fondo: #F6E3C3;     --ultimas-texto: #80460B;
+  --agotado-fondo: #E8E0D6;     --agotado-texto: #5E4B3F;
+
+  /* Tipografías */
+  --fuente-titulos: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --fuente-texto: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radio: 14px;
+  --sombra: 0 1px 2px rgba(85, 43, 25, .08), 0 4px 14px rgba(85, 43, 25, .06);
+}
+
+/* --- Base --------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--crema);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--terracota-oscuro); }
+h1, h2, h3 { font-family: var(--fuente-titulos); font-weight: 600; color: var(--marron); line-height: 1.2; }
+:focus-visible { outline: 3px solid var(--terracota); outline-offset: 2px; border-radius: 6px; }
+[hidden] { display: none !important; }
+.contenedor { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.solo-lectores { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.saltar { position: absolute; left: 8px; top: -60px; background: var(--marron); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
+.saltar:focus { top: 8px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* --- Íconos (siempre acompañados de texto) ------------------------------ */
+.icono {
+  display: inline-block; width: 1.15em; height: 1.15em; flex: none;
+  background: currentColor; vertical-align: -0.2em;
+  -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat;
+}
+.icono--menu { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 6h16M4 12h16M4 18h16'/%3E%3C/svg%3E"); }
+.icono--libro { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M3 5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0zM12 5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0z'/%3E%3C/svg%3E"); }
+.icono--whatsapp { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M3 21l1.7-5A8.5 8.5 0 1 1 8 19.4z'/%3E%3Cpath d='M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z' stroke-width='1.4'/%3E%3C/svg%3E"); }
+.icono--lupa { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5L21 21'/%3E%3C/svg%3E"); }
+.icono--casa { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M4 11l8-7 8 7v9H4z'/%3E%3Cpath d='M10 20v-5h4v5'/%3E%3C/svg%3E"); }
+.icono--envio { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M3 6h11v10H3zM14 10h4l3 3v3h-7z'/%3E%3Ccircle cx='7' cy='17.5' r='1.8'/%3E%3Ccircle cx='17' cy='17.5' r='1.8'/%3E%3C/svg%3E"); }
+.icono--pago { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='12' rx='2'/%3E%3Cpath d='M3 10h18M7 15h3'/%3E%3C/svg%3E"); }
+.icono--instagram { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Crect x='4' y='4' width='16' height='16' rx='4.5'/%3E%3Ccircle cx='12' cy='12' r='3.5'/%3E%3Ccircle cx='16.8' cy='7.2' r='.6' fill='black'/%3E%3C/svg%3E"); }
+.icono--volver { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 12H5M11 6l-6 6 6 6'/%3E%3C/svg%3E"); }
+.icono--compartir { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 15V3M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6'/%3E%3C/svg%3E"); }
+.icono--campana { --i: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0'/%3E%3C/svg%3E"); }
+
+/* --- Botones ------------------------------------------------------------- */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: 48px; padding: .7em 1.3em; border-radius: 999px;
+  font: 700 1rem/1.2 var(--fuente-texto); text-decoration: none; text-align: center;
+  border: 2px solid transparent; cursor: pointer; transition: background-color .15s, color .15s;
+}
+.boton--principal { background: var(--terracota); color: #FFF8F0; }
+.boton--principal:hover { background: var(--terracota-oscuro); }
+.boton--secundario { background: transparent; color: var(--terracota-oscuro); border-color: var(--terracota); }
+.boton--secundario:hover { background: rgba(152, 67, 22, .08); }
+.boton--whatsapp { background: var(--whatsapp); color: #fff; }
+.boton--whatsapp:hover { background: #24562F; }
+.boton--ancho { width: 100%; }
+.boton-texto {
+  display: inline-flex; align-items: center; gap: .4em; min-height: 44px; padding: .4em .6em;
+  background: none; border: 0; color: var(--terracota-oscuro); font: 700 1rem var(--fuente-texto); cursor: pointer;
+}
+
+/* --- Encabezado ---------------------------------------------------------- */
+.encabezado {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--beige); /* mismo beige que el logo: no se nota el recuadro */
+  border-bottom: 1px solid var(--linea);
+}
+.encabezado__fila { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 68px; flex-wrap: wrap; }
+.marca { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; padding: 6px 0; }
+.marca__logo { width: 112px; margin: -4px 0 -6px -6px; }
+.marca__texto { font-family: var(--fuente-titulos); color: var(--marron); font-size: .82rem; letter-spacing: .02em; padding-left: 4px; }
+.boton-menu {
+  display: inline-flex; align-items: center; gap: .4em; min-height: 44px; padding: .4em .9em;
+  background: transparent; border: 2px solid var(--terracota); border-radius: 999px;
+  color: var(--terracota-oscuro); font: 700 1rem var(--fuente-texto); cursor: pointer;
+}
+.menu { display: none; width: 100%; flex-direction: column; padding: 0 0 12px; }
+.menu.abierto { display: flex; }
+.menu a { padding: 12px 4px; font-weight: 700; text-decoration: none; color: var(--marron); border-top: 1px solid var(--linea); }
+@media (min-width: 760px) {
+  .boton-menu { display: none; }
+  .menu, .menu.abierto { display: flex; flex-direction: row; width: auto; gap: 8px; padding: 0; }
+  .menu a { border: 0; padding: 10px 12px; border-radius: 999px; }
+  .menu a:hover { background: rgba(152, 67, 22, .08); }
+  .marca__logo { width: 132px; }
+}
+
+/* --- Portada (inicio) ---------------------------------------------------- */
+.portada { background: var(--beige); position: relative; overflow: hidden; padding: 28px 0 40px; }
+/* Gato-lira muy tenue de fondo */
+.portada::after {
+  content: ""; position: absolute; right: -40px; bottom: -30px; width: 240px; height: 280px;
+  background: url("../img/gato-lira.png") center / contain no-repeat; opacity: .07; pointer-events: none;
+}
+.portada__contenido { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.portada__logo { width: min(420px, 88%); }
+.portada__subtitulo { font-family: var(--fuente-titulos); font-size: 1.6rem; color: var(--marron); margin: -6px 0 12px; }
+.portada__frase { max-width: 34ch; margin: 0 0 22px; font-size: 1.12rem; color: var(--texto); }
+.portada__botones { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 360px; }
+@media (min-width: 760px) {
+  .portada { padding: 40px 0 56px; }
+  .portada::after { width: 360px; height: 420px; right: 4%; }
+  .portada__botones { flex-direction: row; max-width: none; justify-content: center; }
+}
+
+/* --- Secciones ----------------------------------------------------------- */
+.seccion { padding: 40px 0; }
+.seccion--angosta .contenedor { max-width: 760px; }
+.titulo-seccion { font-size: 1.85rem; margin: 0 0 18px; }
+.separador { display: flex; justify-content: center; padding: 8px 0; }
+.separador img { width: 34px; opacity: .45; }
+.texto p { margin: 0 0 1em; }
+.aviso-provisorio {
+  display: inline-block; margin: 0 0 12px; padding: 4px 10px; border: 2px dashed var(--terracota);
+  border-radius: 8px; color: var(--terracota-oscuro); font-weight: 700; font-size: .9rem;
+}
+
+/* --- Filtros --------------------------------------------------------------- */
+.filtros { display: grid; gap: 12px; margin-bottom: 8px; }
+.buscador { display: flex; align-items: center; gap: 8px; background: var(--papel); border: 2px solid var(--linea); border-radius: 999px; padding: 0 16px; color: var(--texto-suave); }
+.buscador:focus-within { border-color: var(--terracota); }
+.buscador input { flex: 1; min-width: 0; min-height: 48px; border: 0; background: transparent; font: inherit; color: var(--texto); outline: none; }
+.buscador input::placeholder { color: #8A7262; }
+.filtros__grupo { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  min-height: 44px; padding: .45em 1.05em; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--terracota); background: transparent; color: var(--terracota-oscuro);
+  font: 700 .98rem var(--fuente-texto);
+}
+.chip[aria-pressed="true"] { background: var(--terracota); color: #FFF8F0; }
+.filtros__edad { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--marron); }
+.filtros__edad select {
+  min-height: 44px; flex: 1; max-width: 280px; padding: 0 12px; border-radius: 12px;
+  border: 2px solid var(--linea); background: var(--papel); font: inherit; color: var(--texto);
+}
+@media (min-width: 900px) {
+  .filtros { grid-template-columns: minmax(260px, 1fr) auto auto; align-items: center; }
+}
+.resultado { color: var(--texto-suave); margin: 4px 0 14px; font-size: .95rem; }
+.aviso-precios { color: var(--texto-suave); font-size: .9rem; margin-top: 16px; }
+.cargando { grid-column: 1 / -1; color: var(--texto-suave); }
+
+/* --- Grilla y tarjetas ------------------------------------------------------ */
+.grilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (min-width: 640px) { .grilla { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 980px) { .grilla { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } }
+.tarjeta {
+  display: flex; flex-direction: column; background: var(--papel); border-radius: var(--radio);
+  box-shadow: var(--sombra); text-decoration: none; color: inherit; overflow: hidden;
+  transition: transform .15s;
+}
+.tarjeta:hover { transform: translateY(-2px); }
+.tarjeta--agotado .foto img { opacity: .55; filter: grayscale(.4); }
+.tarjeta__info { padding: 10px 12px 14px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.tarjeta__nombre { font-family: var(--fuente-titulos); font-weight: 600; color: var(--marron); font-size: 1.02rem; line-height: 1.25; margin: 0; }
+.tarjeta__dato { color: var(--texto-suave); font-size: .9rem; margin: 0; line-height: 1.35; }
+.tarjeta__pie { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+/* Foto (con imagen provisoria si falta) */
+.foto { position: relative; aspect-ratio: 4 / 5; background: #EFE5D7; display: flex; align-items: center; justify-content: center; }
+.foto img { width: 100%; height: 100%; object-fit: contain; }
+.foto--vacia img { width: 42%; height: auto; opacity: .3; }
+.foto__cartel {
+  position: absolute; top: 10px; left: 10px; background: var(--marron); color: #FFF8F0;
+  padding: 3px 10px; border-radius: 999px; font-size: .8rem; font-weight: 700;
+}
+
+/* Estados */
+.estado { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .82rem; font-weight: 700; }
+.estado--disponible { background: var(--disponible-fondo); color: var(--disponible-texto); }
+.estado--ultimas { background: var(--ultimas-fondo); color: var(--ultimas-texto); }
+.estado--agotado { background: var(--agotado-fondo); color: var(--agotado-texto); }
+.borrador { display: inline-block; padding: 1px 8px; border: 1px dashed var(--terracota); border-radius: 6px; font-size: .78rem; color: var(--terracota-oscuro); font-weight: 700; }
+
+/* --- Cómo comprar ------------------------------------------------------------ */
+.pasos { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 14px; }
+.pasos li { display: flex; gap: 14px; align-items: flex-start; background: var(--papel); border-radius: var(--radio); padding: 16px; box-shadow: var(--sombra); }
+.pasos p { margin: 2px 0 0; color: var(--texto-suave); }
+.pasos__numero {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--terracota); color: #FFF8F0;
+  display: flex; align-items: center; justify-content: center; font: 600 1.2rem var(--fuente-titulos);
+}
+.info-compra { display: grid; gap: 14px; }
+@media (min-width: 700px) { .info-compra { grid-template-columns: repeat(3, 1fr); } }
+.info-compra__bloque { border: 2px solid var(--linea); border-radius: var(--radio); padding: 14px 16px; }
+.info-compra__bloque h3 { font-size: 1.15rem; margin: 0 0 6px; display: flex; gap: .4em; align-items: center; color: var(--terracota-oscuro); }
+.info-compra__bloque p { margin: 0; }
+.lista-simple { margin: 0; padding-left: 1.1em; }
+
+/* --- Pie --------------------------------------------------------------------- */
+.pie { background: var(--beige); padding: 32px 0 100px; margin-top: 24px; text-align: center; border-top: 1px solid var(--linea); }
+.pie__contenido { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.pie__gato { width: 44px; opacity: .8; }
+.pie__nombre { font-family: var(--fuente-titulos); font-size: 1.25rem; color: var(--marron); margin: 6px 0 0; }
+.pie p { margin: 0; }
+.pie__links { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; justify-content: center; }
+.pie__links a {
+  display: inline-flex; align-items: center; gap: .4em; min-height: 44px; padding: .4em 1em;
+  border: 2px solid var(--terracota); border-radius: 999px; text-decoration: none; font-weight: 700;
+}
+
+/* --- Botón flotante de WhatsApp ------------------------------------------------ */
+.whatsapp-flotante {
+  position: fixed; right: 16px; bottom: 16px; z-index: 30;
+  display: inline-flex; align-items: center; gap: .45em; min-height: 52px; padding: .7em 1.2em;
+  background: var(--whatsapp); color: #fff; border-radius: 999px; text-decoration: none; font-weight: 700;
+  box-shadow: 0 4px 16px rgba(46, 26, 16, .25);
+}
+.whatsapp-flotante .icono { width: 1.35em; height: 1.35em; }
+
+/* --- Detalle de producto (ventana) --------------------------------------------- */
+.detalle {
+  width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; padding: 0; border: 0;
+  background: var(--crema); color: var(--texto);
+}
+.detalle::backdrop { background: rgba(46, 26, 16, .55); }
+.detalle__barra {
+  position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between;
+  padding: 6px 8px; background: var(--beige); border-bottom: 1px solid var(--linea);
+}
+.detalle__cuerpo { padding: 16px 16px 32px; display: grid; gap: 18px; }
+.detalle__cuerpo .foto { border-radius: var(--radio); overflow: hidden; aspect-ratio: 1 / 1; max-height: 42vh; width: 100%; }
+@media (min-width: 760px) { .detalle__cuerpo .foto { max-height: none; } }
+.detalle__nombre { font-size: 1.6rem; margin: 0 0 8px; }
+.detalle__nombre:focus { outline: none; }
+.detalle__etiquetas { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.etiqueta { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .82rem; font-weight: 700; border: 1.5px solid var(--linea); color: var(--texto-suave); }
+.datos { margin: 0 0 16px; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+.datos dt { font-weight: 700; color: var(--marron); }
+.datos dd { margin: 0; }
+.dato-faltante { color: var(--texto-suave); font-style: italic; }
+.detalle__descripcion { margin: 0 0 18px; white-space: pre-line; }
+.precio { font-family: var(--fuente-titulos); font-size: 1.35rem; color: var(--terracota-oscuro); margin: 0 0 4px; }
+.precio__aviso { font-size: .85rem; color: var(--texto-suave); margin: 0 0 14px; }
+.detalle__acciones { display: grid; gap: 10px; }
+.detalle__nota { font-size: .9rem; color: var(--texto-suave); margin: 0; }
+@media (min-width: 760px) {
+  .detalle { width: min(960px, 94vw); height: auto; max-height: 92vh; margin: auto; border-radius: 18px; }
+  .detalle__cuerpo { grid-template-columns: 1fr 1fr; gap: 28px; padding: 24px 28px 32px; align-items: start; }
+}
+body.con-detalle { overflow: hidden; }

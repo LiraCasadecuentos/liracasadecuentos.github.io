@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lira. Casa de Cuentos · Libros, juegos y mapas para chicos en Tucumán</title>
+  <meta name="description" content="Librería y juguetería didáctica infantil de Tucumán. Mirá el catálogo de libros, juegos y mapas para pintar y consultanos por WhatsApp.">
+  <meta name="theme-color" content="#E2D5C3">
+
+  <!-- Vista previa al compartir (WhatsApp, Instagram, Facebook).
+       Al publicar, herramientas/publicar.js agrega og:url y pone la dirección
+       completa de la imagen (usa direccionWeb de js/config.js). -->
+  <link rel="canonical" href="https://liracasadecuentos.github.io/">
+  <meta property="og:url" content="https://liracasadecuentos.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Lira. Casa de Cuentos">
+  <meta property="og:title" content="Lira. Casa de Cuentos">
+  <meta property="og:description" content="Libros, juegos y mapas para chicos. Mirá el catálogo y consultanos por WhatsApp.">
+  <meta property="og:image" content="https://liracasadecuentos.github.io/img/compartir.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <!-- Tipografías: Fraunces (títulos, con serif) y Nunito Sans (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#principal">Saltar al contenido</a>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <header class="encabezado">
+    <div class="contenedor encabezado__fila">
+      <a class="marca" href="#inicio" aria-label="Lira. Casa de Cuentos, ir al inicio">
+        <img src="img/logo-lira.png" alt="" width="900" height="346" class="marca__logo">
+        <span class="marca__texto">Casa de Cuentos</span>
+      </a>
+      <button class="boton-menu" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="icono icono--menu" aria-hidden="true"></span> Menú
+      </button>
+      <nav id="menu" class="menu" aria-label="Secciones">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#quienes-somos">Quiénes somos</a>
+        <a href="#como-comprar">Cómo comprar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="principal">
+    <!-- ===================== INICIO ===================== -->
+    <section id="inicio" class="portada">
+      <div class="contenedor portada__contenido">
+        <img src="img/logo-lira.png" alt="Lira" width="900" height="346" class="portada__logo">
+        <p class="portada__subtitulo">Casa de Cuentos</p>
+        <p class="portada__frase" data-texto="bienvenida"></p>
+        <div class="portada__botones">
+          <a class="boton boton--principal" href="#catalogo">
+            <span class="icono icono--libro" aria-hidden="true"></span> Ver catálogo
+          </a>
+          <a class="boton boton--secundario" data-whatsapp="general" href="#" target="_blank" rel="noopener">
+            <span class="icono icono--whatsapp" aria-hidden="true"></span> Escribinos por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recién llegados: aparece solo si hay productos con "nuevo" = sí -->
+    <section id="recien-llegados" class="seccion" hidden aria-labelledby="titulo-nuevos">
+      <div class="contenedor">
+        <h2 id="titulo-nuevos" class="titulo-seccion">Recién llegados</h2>
+        <div class="grilla grilla--nuevos" id="grilla-nuevos"></div>
+      </div>
+    </section>
+
+    <!-- ===================== CATÁLOGO ===================== -->
+    <section id="catalogo" class="seccion" aria-labelledby="titulo-catalogo">
+      <div class="contenedor">
+        <h2 id="titulo-catalogo" class="titulo-seccion">Catálogo</h2>
+
+        <div class="filtros">
+          <label class="buscador">
+            <span class="solo-lectores">Buscar por nombre, autor o marca</span>
+            <span class="icono icono--lupa" aria-hidden="true"></span>
+            <input id="buscador" type="search" placeholder="Buscá por nombre, autor o marca" autocomplete="off">
+          </label>
+
+          <div class="filtros__grupo" role="group" aria-label="Tipo de producto" id="filtro-tipos"></div>
+
+          <label class="filtros__edad">
+            <span>Edad</span>
+            <select id="filtro-edad"></select>
+          </label>
+        </div>
+
+        <p class="resultado" id="resultado" role="status" aria-live="polite"></p>
+        <div class="grilla" id="grilla-catalogo">
+          <p class="cargando">Cargando productos…</p>
+        </div>
+        <p class="aviso-precios" id="aviso-precios" hidden>Precios sujetos a cambios.</p>
+      </div>
+    </section>
+
+    <div class="separador" aria-hidden="true"><img src="img/gato-lira.png" alt="" width="260" height="300"></div>
+
+    <!-- ===================== QUIÉNES SOMOS ===================== -->
+    <section id="quienes-somos" class="seccion seccion--angosta" aria-labelledby="titulo-quienes">
+      <div class="contenedor">
+        <h2 id="titulo-quienes" class="titulo-seccion">Quiénes somos</h2>
+        <p class="aviso-provisorio" id="aviso-provisorio" hidden>Texto provisorio: reescribilo en js/config.js</p>
+        <div id="texto-quienes" class="texto"></div>
+      </div>
+    </section>
+
+    <!-- ===================== CÓMO COMPRAR ===================== -->
+    <section id="como-comprar" class="seccion seccion--angosta" aria-labelledby="titulo-comprar">
+      <div class="contenedor">
+        <h2 id="titulo-comprar" class="titulo-seccion">Cómo comprar</h2>
+        <ol class="pasos">
+          <li><span class="pasos__numero" aria-hidden="true">1</span><div><strong>Elegí lo que te gusta</strong><p>Recorré el catálogo y tocá un producto para ver más.</p></div></li>
+          <li><span class="pasos__numero" aria-hidden="true">2</span><div><strong>Escribinos por WhatsApp</strong><p>Con el botón «Consultar por WhatsApp» nos llega tu mensaje con el producto.</p></div></li>
+          <li><span class="pasos__numero" aria-hidden="true">3</span><div><strong>Coordinamos pago y entrega</strong><p>Te confirmamos disponibilidad y precio, y arreglamos cómo te llega.</p></div></li>
+        </ol>
+        <div class="info-compra">
+          <div class="info-compra__bloque">
+            <h3><span class="icono icono--casa" aria-hidden="true"></span> Retiro</h3>
+            <p data-texto="retiro"></p>
+          </div>
+          <div class="info-compra__bloque">
+            <h3><span class="icono icono--envio" aria-hidden="true"></span> Envíos</h3>
+            <p data-texto="envios"></p>
+          </div>
+          <div class="info-compra__bloque">
+            <h3><span class="icono icono--pago" aria-hidden="true"></span> Medios de pago</h3>
+            <ul id="medios-pago" class="lista-simple"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== PIE ===================== -->
+  <footer class="pie">
+    <div class="contenedor pie__contenido">
+      <img src="img/gato-lira.png" alt="" width="52" height="60" class="pie__gato">
+      <p class="pie__nombre">Lira. Casa de Cuentos</p>
+      <p>Librería y juguetería didáctica infantil · Tucumán</p>
+      <div class="pie__links">
+        <a data-whatsapp="general" href="#" target="_blank" rel="noopener"><span class="icono icono--whatsapp" aria-hidden="true"></span> WhatsApp</a>
+        <a id="link-instagram" href="#" target="_blank" rel="noopener"><span class="icono icono--instagram" aria-hidden="true"></span> Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp (siempre visible) -->
+  <a class="whatsapp-flotante" data-whatsapp="general" href="#" target="_blank" rel="noopener">
+    <span class="icono icono--whatsapp" aria-hidden="true"></span> WhatsApp
+  </a>
+
+  <!-- ===================== DETALLE DE PRODUCTO ===================== -->
+  <dialog id="detalle" class="detalle" aria-labelledby="detalle-nombre">
+    <div class="detalle__barra">
+      <button type="button" class="boton-texto" data-cerrar>
+        <span class="icono icono--volver" aria-hidden="true"></span> Volver
+      </button>
+      <button type="button" class="boton-texto" id="boton-compartir">
+        <span class="icono icono--compartir" aria-hidden="true"></span> <span>Compartir</span>
+      </button>
+    </div>
+    <div class="detalle__cuerpo" id="detalle-cuerpo"></div>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/utilidades.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
